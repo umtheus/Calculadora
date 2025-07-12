@@ -1,1 +1,74 @@
-<p>calc works!</p>
+<div class="w-screen h-screen flex justify-center items-center">
+  <section class="w-[400px] bg-slate-400 rounded-lg justify-between shadow-lg">
+    <div
+      id="h-screen"
+      class="w-[300px] ml-12 mt-10 p-14 rounded-lg bg-white relative shadow-lg"
+    >
+      <div class="opacity-70 text-sm absolute left-4 top-2">
+        <span>{{ hour }}</span>
+        <span
+          [class.opacity-0]="!doisPontos"
+          class="transition-opacity duration-300"
+          >:</span
+        >
+        <span>{{ min }}</span>
+      </div>
+      <span class="absolute right-4 top-2 text-sm opacity-70">{{
+        dataFormatada
+      }}</span>
+      <input
+        type="text"
+        name=""
+        dir="rtl"
+        id="display"
+        readonly
+        [value]="display"
+        class="absolute bottom-0 right-4 text-5xl font-semibold w-11/12"
+      />
+    </div>
+
+    <div class="grid grid-cols-4 gap-4 p-8" id="container">
+      @for (item of caracters; track item.label; let isLast = $last) { @if
+      (item.value === 'AC' || item.value === 'C' || item.value ==='%' ||
+      item.value === '/' || item.value === '*' || item.value === '-' ||
+      item.value === '+') {
+      <button
+        (click)="
+          item.value === 'AC'
+            ? del()
+            : item.value === 'C'
+            ? clear()
+            : append(item.value)
+        "
+        class="flex p-4 bg-white text-orange-500 justify-center rounded-lg font-semibold text-lg hover:brightness-90 active:scale-95 transition-transform duration-75"
+        [class.col-span-2]="isLast"
+      >
+        <span> {{ item.label }}</span>
+      </button>
+
+      }@else if(item.value === '='){
+      <button
+        (click)="calculate()"
+        class="flex p-4 bg-orange-500 text-white font-bold text-lg justify-center rounded-lg hover:brightness-90 active:scale-95 transition-transform duration-75"
+        [class.col-span-2]="isLast"
+      >
+        <span> {{ item.label }}</span>
+      </button>
+      }@else {
+      <button
+        (click)="
+          item.value === '='
+            ? calculate()
+            : item.value === 'AC'
+            ? clear()
+            : append(item.value)
+        "
+        class="flex p-4 bg-white font-semibold text-lg justify-center rounded-lg hover:brightness-90 active:scale-95 transition-transform duration-75"
+        [class.col-span-2]="isLast"
+      >
+        <span> {{ item.label }}</span>
+      </button>
+      } }
+    </div>
+  </section>
+</div>
