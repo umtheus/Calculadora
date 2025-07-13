@@ -29,9 +29,8 @@
 
     <div class="grid grid-cols-4 gap-4 p-8" id="container">
       @for (item of caracters; track item.label; let isLast = $last) { @if
-      (item.value === 'AC' || item.value === 'C' || item.value ==='%' ||
-      item.value === '/' || item.value === '*' || item.value === '-' ||
-      item.value === '+') {
+      (item.value === 'AC' || item.value === 'C' || item.value === '/' ||
+      item.value === '*' || item.value === '-' || item.value === '+') {
       <button
         (click)="
           item.value === 'AC'
@@ -54,6 +53,14 @@
       >
         <span> {{ item.label }}</span>
       </button>
+      }@else if(item.value === '%'){
+      <button
+        (click)="porcent()"
+        class="flex p-4 bg-white text-orange-500 justify-center rounded-lg font-semibold text-lg hover:brightness-90 active:scale-95 transition-transform duration-75"
+      >
+        <span>{{ item.label }}</span>
+      </button>
+
       }@else {
       <button
         (click)="
