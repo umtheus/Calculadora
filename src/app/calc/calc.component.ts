@@ -60,6 +60,14 @@ export class CalcComponent {
 
     this.display += value;
   }
+  porcent() {
+    try {
+      const result = eval(this.display) / 100;
+      this.display = result.toString();
+    } catch {
+      this.display = 'Error';
+    }
+  }
 
   del() {
     if (this.display === '0') {
