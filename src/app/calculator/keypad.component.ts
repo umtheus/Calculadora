@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,4 +8,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './keypad.component.html',
   styleUrl: './keypad.component.scss',
 })
-export class KeypadComponent {}
+export class KeypadComponent {
+  @Output() teclaPressionada = new EventEmitter<string>();
+  onClick(value: string) {
+    this.teclaPressionada.emit(value);
+  }
+}
