@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 @Component({
-  selector: 'app-calc',
+  selector: 'app-calculator',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './calc.component.html',
-  styleUrl: './calc.component.scss',
+  templateUrl: './calculator.component.html',
+  styleUrl: './calculator.component.scss',
 })
-export class CalcComponent {
+export class CalculatorComponent implements OnInit {
   now = new Date();
   hour = '';
   min = '';
@@ -51,7 +52,7 @@ export class CalcComponent {
     }
     // Bloqueia varios pontos no mesmo numero
     if (value === '.') {
-      const partes = this.display.split(/[\+\-\*\/\%]/); // vai separar pelos operadores
+      const partes = this.display.split(/[+\-*/%]/); // vai separar pelos operadores
       const ultimoNumero = partes[partes.length - 1];
       if (ultimoNumero.includes('.')) {
         return;

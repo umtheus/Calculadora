@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CalcComponent } from './calc.component';
+import { CalculatorComponent } from './calculator.component';
 import { By } from '@angular/platform-browser';
 
 describe('CalcComponent', () => {
-  let component: CalcComponent;
-  let fixture: ComponentFixture<CalcComponent>;
+  let component: CalculatorComponent;
+  let fixture: ComponentFixture<CalculatorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CalcComponent],
+      imports: [CalculatorComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CalcComponent);
+    fixture = TestBed.createComponent(CalculatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
